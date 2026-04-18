@@ -1,0 +1,108 @@
+.golfer-panel {
+  padding: 20px;
+}
+
+.golfer-panel__title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--color-augusta-green);
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  letter-spacing: 0.03em;
+}
+
+.golfer-panel__list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  min-height: 40px;
+}
+
+.golfer-panel__empty {
+  color: var(--color-missing);
+  font-size: 13px;
+  font-style: italic;
+  padding: 8px 0;
+}
+
+.golfer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  background: var(--color-cream);
+  border: 1px solid var(--color-border);
+}
+
+.golfer-row__number {
+  font-size: 12px;
+  color: var(--color-missing);
+  width: 18px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.golfer-row__name {
+  flex: 1;
+  font-size: 14px;
+  color: var(--color-charcoal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.golfer-row__name:hover {
+  background: var(--color-cream-dark);
+}
+
+.golfer-row__input {
+  flex: 1;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  color: var(--color-charcoal);
+  border: 1px solid var(--color-gold);
+  border-radius: 2px;
+  padding: 2px 6px;
+  outline: none;
+  background: var(--color-white);
+}
+
+.golfer-row__input:focus {
+  border-color: var(--color-augusta-green);
+  box-shadow: 0 0 0 2px rgba(0,103,71,0.15);
+}
+
+.golfer-row__actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* Add form */
+.golfer-add-form {
+  display: flex;
+  gap: 8px;
+}
+
+.golfer-add-form__input {
+  flex: 1;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  padding: 7px 10px;
+  outline: none;
+  background: var(--color-white);
+}
+
+.golfer-add-form__input:focus {
+  border-color: var(--color-augusta-green);
+  box-shadow: 0 0 0 2px rgba(0,103,71,0.15);
+}

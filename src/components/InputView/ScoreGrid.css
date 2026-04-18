@@ -1,0 +1,199 @@
+.score-grid-wrapper {
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+.score-grid {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 400px;
+  font-size: 13px;
+}
+
+/* Header rows */
+.score-grid thead tr {
+  background: var(--color-augusta-green);
+}
+
+.score-grid__hole-header {
+  color: var(--color-gold);
+  font-family: var(--font-serif);
+  font-weight: normal;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-align: center;
+  padding: 8px 6px 4px;
+  min-width: 58px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+
+.score-grid__name-header {
+  color: rgba(255,255,255,0.7);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px 12px 4px;
+  text-align: left;
+  position: sticky;
+  left: 0;
+  background: var(--color-augusta-green);
+  z-index: 2;
+  min-width: 130px;
+}
+
+/* Date row */
+.score-grid__date-row {
+  background: var(--color-dark-green);
+}
+
+.score-grid__date-cell {
+  padding: 4px 4px 6px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.score-grid__date-name-cell {
+  position: sticky;
+  left: 0;
+  background: var(--color-dark-green);
+  z-index: 2;
+  padding: 4px 12px 6px;
+}
+
+.score-grid__date-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hole-date-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+}
+
+.hole-date-input {
+  width: 36px;
+  height: 22px;
+  border: none;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.12);
+  color: var(--color-white);
+  font-size: 10px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  padding: 0 2px;
+}
+
+.hole-date-input::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(0.6);
+  width: 10px;
+  height: 10px;
+  padding: 0;
+}
+
+.hole-date-input:focus {
+  background: rgba(255,255,255,0.22);
+  outline: 1px solid var(--color-gold);
+}
+
+.hole-date-display {
+  font-size: 9px;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
+
+/* Body rows */
+.score-grid tbody tr {
+  border-bottom: 1px solid var(--color-cream-dark);
+}
+
+.score-grid tbody tr:nth-child(odd) {
+  background: var(--color-white);
+}
+
+.score-grid tbody tr:nth-child(even) {
+  background: var(--color-cream);
+}
+
+.score-grid tbody tr:hover {
+  background: #edf5f0;
+}
+
+.score-grid__name-cell {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  border-right: 2px solid var(--color-border);
+}
+
+.score-grid tbody tr:nth-child(odd) .score-grid__name-cell {
+  background: var(--color-white);
+}
+
+.score-grid tbody tr:nth-child(even) .score-grid__name-cell {
+  background: var(--color-cream);
+}
+
+.score-grid tbody tr:hover .score-grid__name-cell {
+  background: #edf5f0;
+}
+
+/* Score cells */
+.score-cell {
+  text-align: center;
+  padding: 3px 4px;
+  border-right: 1px solid var(--color-cream-dark);
+}
+
+.score-cell__input {
+  width: 46px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  background: transparent;
+  outline: none;
+  -moz-appearance: textfield;
+  cursor: pointer;
+}
+
+.score-cell__input::-webkit-inner-spin-button,
+.score-cell__input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.score-cell__input:focus {
+  border-color: var(--color-gold);
+  background: var(--color-white);
+  box-shadow: 0 0 0 2px rgba(201,168,76,0.2);
+}
+
+.score-cell__input::placeholder {
+  color: var(--color-missing);
+}
+
+.score-cell--under .score-cell__input { color: var(--color-under-par); font-weight: 700; }
+.score-cell--over  .score-cell__input { color: var(--color-over-par); }
+.score-cell--even  .score-cell__input { color: var(--color-even-par); font-weight: 600; }
+.score-cell--empty .score-cell__input { color: var(--color-missing); }
+
+/* Empty state */
+.score-grid__empty {
+  text-align: center;
+  padding: 32px;
+  color: var(--color-missing);
+  font-style: italic;
+  font-size: 14px;
+}
