@@ -3,7 +3,7 @@ import ScoreCell from './ScoreCell.jsx';
 import './ScoreGrid.css';
 
 const MIN_HOLES = 4;
-const MAX_HOLES = 30;
+const MAX_HOLES = 18;
 
 function getDisplayedHoles(holes, scores, golfers) {
   let maxUsed = 0;

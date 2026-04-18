@@ -62,7 +62,7 @@ export function useAppStore() {
 
   const setHoleDate = useCallback((holeNumber, dateStr) => {
     setState(prev => {
-      const MAX_HOLES = 30;
+      const MAX_HOLES = 18;
       // Build a full holes array up to MAX_HOLES, merging existing data
       let holes = Array.from({ length: MAX_HOLES }, (_, i) => {
         const num = i + 1;

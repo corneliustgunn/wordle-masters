@@ -3,6 +3,7 @@ import { formatDisplayDate } from '../../utils/dateUtils.js';
 import LeaderboardRow from './LeaderboardRow.jsx';
 import './Leaderboard.css';
 
+const MAX_HOLES = 18;
 const MIN_HOLES = 4;
 
 function getDisplayedHoles(holes, scores, golfers) {
@@ -12,7 +13,7 @@ function getDisplayedHoles(holes, scores, golfers) {
     const gs = scores[g.id] ?? {};
     Object.keys(gs).forEach(n => { maxUsed = Math.max(maxUsed, Number(n)); });
   });
-  const displayCount = Math.max(maxUsed, MIN_HOLES);
+  const displayCount = Math.min(Math.max(maxUsed, MIN_HOLES), MAX_HOLES);
   return Array.from({ length: displayCount }, (_, i) => {
     const num = i + 1;
     return holes.find(h => h.number === num) ?? { number: num, date: null };
@@ -22,6 +23,11 @@ function getDisplayedHoles(holes, scores, golfers) {
 export default function Leaderboard({ golfers, holes, scores }) {
   const displayedHoles = getDisplayedHoles(holes, scores, golfers);
   const ranked = computeLeaderboard(golfers, displayedHoles, scores);
+
+  const frontNine = displayedHoles.filter(h => h.number <= 9);
+  const backNine  = displayedHoles.filter(h => h.number >= 10);
+  const showOut = frontNine.length === 9;
+  const showIn  = backNine.length > 0;
 
   return (
     <div className="leaderboard-container card">
@@ -43,17 +49,19 @@ export default function Leaderboard({ golfers, holes, scores }) {
               <th className="th-rank">#</th>
               <th className="th-name">Player</th>
               <th className="th-total">Total</th>
-              {displayedHoles.map(h => (
-                <th key={h.number}>{h.number}</th>
-              ))}
+              {frontNine.map(h => <th key={h.number}>{h.number}</th>)}
+              {showOut && <th className="th-subtotal">Out</th>}
+              {backNine.map(h => <th key={h.number}>{h.number}</th>)}
+              {showIn && <th className="th-subtotal">In</th>}
             </tr>
             <tr className="leaderboard-date-row">
               <th className="th-rank"> </th>
               <th className="th-name"> </th>
               <th className="th-total"> </th>
-              {displayedHoles.map(h => (
-                <th key={h.number}>{formatDisplayDate(h.date)}</th>
-              ))}
+              {frontNine.map(h => <th key={h.number}>{formatDisplayDate(h.date)}</th>)}
+              {showOut && <th className="th-subtotal"> </th>}
+              {backNine.map(h => <th key={h.number}>{formatDisplayDate(h.date)}</th>)}
+              {showIn && <th className="th-subtotal"> </th>}
             </tr>
           </thead>
           <tbody>
@@ -62,7 +70,8 @@ export default function Leaderboard({ golfers, holes, scores }) {
                 key={entry.golfer.id}
                 entry={entry}
                 isLeader={i === 0}
-                holes={displayedHoles}
+                showOut={showOut}
+                showIn={showIn}
               />
             ))}
           </tbody>
