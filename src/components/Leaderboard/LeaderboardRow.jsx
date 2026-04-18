@@ -12,8 +12,8 @@ export default function LeaderboardRow({ entry, isLeader, showOut, showIn }) {
 
   const frontBreakdown = breakdown.filter(b => b.holeNumber <= 9);
   const backBreakdown  = breakdown.filter(b => b.holeNumber >= 10);
-  const outTotal = frontBreakdown.reduce((sum, b) => sum + b.relativeToPar, 0);
-  const inTotal  = backBreakdown.reduce((sum, b) => sum + b.relativeToPar, 0);
+  const outTotal = frontBreakdown.reduce((sum, b) => sum + (b.relativeToPar ?? 0), 0);
+  const inTotal  = backBreakdown.reduce((sum, b) => sum + (b.relativeToPar ?? 0), 0);
 
   let totalClass = 'lb-row__total';
   if (totalRelativeToPar < 0) totalClass += ' lb-row__total--under';
